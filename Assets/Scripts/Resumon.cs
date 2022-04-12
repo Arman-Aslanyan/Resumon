@@ -62,15 +62,22 @@ public class Info
     }
 }
 
+[System.Serializable]
 public class Resumon : MonoBehaviour
 {
     public Stats stats = new Stats();
     public Info info = new Info();
+    public GameObject prefab;
+
+    public Resumon()
+    {
+
+    }
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        GameObject body = Instantiate(prefab);
     }
 
     // Update is called once per frame
