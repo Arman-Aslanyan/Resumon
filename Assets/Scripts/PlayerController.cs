@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
 public class grassDetector
 {
     public Vector3 pos;
@@ -18,17 +19,40 @@ public class grassDetector
 
     public grassDetector()
     {
-        pos = Vector3.one;
+        pos = Vector3.zero;
         scale = Vector3.one;
         mask = 4160;
     }
 }
 
+public class PlayerVals : MonoBehaviour
+{
+    public GameObject obj;
+    public PlayerController comp;
+    public Transform trans;
+    public Rigidbody2D rb;
+    public Collider2D coll;
+
+    public PlayerVals()
+    {
+        obj = comp.gameObject;
+        trans = obj.transform;
+        rb = obj.GetComponent<Rigidbody2D>();
+        coll = obj.GetComponent<Collider2D>();
+    }
+}
+
 public class PlayerController : MonoBehaviour
 {
+    [HideInInspector]
+    public Rigidbody2D rb;
+    [HideInInspector]
+    public Collider2D coll;
+    [HideInInspector]
+    public bool isGrassed;
+
     public grassDetector gCheck = new grassDetector();
     public float moveSpeed = 5f;
-    private Rigidbody2D rb;
     private Animator animator;
     Vector2 movement;
     public bool canMove = true;
@@ -37,6 +61,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        coll = GetComponent<Collider2D>();
         //animator = GetComponent<Animator>();
     }
 
@@ -60,5 +85,14 @@ public class PlayerController : MonoBehaviour
     public bool GetGrassed()
     {
         return Physics2D.OverlapBox(gCheck.pos + transform.position, gCheck.scale, 0, gCheck.mask);
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        if (isGrassed)
+            Gizmos.color = Color.red;
+        else
+            Gizmos.color = Color.white;
+        Gizmos.DrawCube(gCheck.pos + transform.position, gCheck.scale);
     }
 }
