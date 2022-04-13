@@ -5,32 +5,41 @@ using UnityEngine;
 [System.Serializable]
 public class Stats
 {
-    private int lvl;
-    private int gold;
-    private int maxHp;
-    private int curHp;
+    [SerializeField] private int lvl;
+    [SerializeField] private int gold;
+    [SerializeField] private int maxHp;
+    [SerializeField] private int curHp;
+    [SerializeField] private int dmg = 5;
 
-    public Stats(int lvl, int gold)
+    public Stats(int lvl, int gold, int maxHp, int dmg)
         : this()
     {
         this.lvl = lvl;
         this.gold = gold;
+        this.maxHp = maxHp;
+        this.curHp = maxHp;
+        this.dmg = dmg;
     }
 
     public Stats()
     {
         lvl = 0;
         gold = 0;
+        maxHp = 10;
+        curHp = maxHp;
+        dmg = 1;
     }
 
     public int GetLvl() { return lvl; }
     public int GetGold() { return gold; }
     public int GetMaxHp() { return maxHp; }
     public int GetCurHp() { return curHp; }
+    public int GetDmg() { return dmg; }
     public void SetLvl(int lvl) { if (lvl >= 1) { this.lvl = lvl; } }
     public void SetGold(int gold) { if (gold >= 100) { this.gold = gold; } }
     public void SetMaxHp(int maxHp) { if (maxHp >= 1) { this.maxHp = maxHp; } }
     public void SetCurHp(int curHp) { if (curHp >= 0) { this.curHp = curHp; } }
+    public void SetDmg(int dmg) { this.dmg = dmg; }
 }
 
 [System.Serializable]
@@ -62,32 +71,20 @@ public class Info
     }
 }
 
-[System.Serializable]
-public class Resumon : MonoBehaviour
+[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon")]
+public class Resumon : ScriptableObject
 {
     public Stats stats = new Stats();
     public Info info = new Info();
-    public GameObject prefab;
-
-    public Resumon()
-    {
-
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        GameObject body = Instantiate(prefab);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 
     public void attack(Resumon other)
     {
         //To-Do:
+        other.stats.SetCurHp(other.stats.GetCurHp() - stats.GetDmg());
+    }
+
+    public string ToString()
+    {
+        return "No. " + info.ResuNum + " | Name: " + info.name + " |";
     }
 }

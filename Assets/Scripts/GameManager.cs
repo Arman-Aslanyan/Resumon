@@ -5,15 +5,13 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     PlayerController player;
-    public GameObject[] array = new GameObject[3];
+    public Resumon[] array = new Resumon[3];
     float time;
 
     // Start is called before the first frame update
     void Start()
     {
         player = FindObjectOfType<PlayerController>();
-        foreach (GameObject resu in array)
-            resu.AddComponent<Resumon>();
     }
 
     // Update is called once per frame
