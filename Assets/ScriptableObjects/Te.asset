@@ -10,18 +10,18 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91af8e467b2789249bb5101a6602a6a0, type: 3}
-  m_Name: Tetsu
+  m_Name: Te
   m_EditorClassIdentifier: 
   stats:
-    lvl: 2
-    gold: 125
-    maxHp: 10
-    curHp: 10
-    dmg: 2
+    lvl: 1
+    gold: 75
+    maxHp: 5
+    curHp: 5
+    dmg: 1
   info:
-    name: Tetsu
-    ResuNum: 2
+    name: Te
+    ResuNum: 1
     gender: Unknown
-    behaviour: Combative
-    lore: Blood Seeker
-  sprite: {fileID: 6496091103802532325, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}
+    behaviour: Looks-Menacing
+    lore: run
+  sprite: {fileID: -2990659816645563417, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}

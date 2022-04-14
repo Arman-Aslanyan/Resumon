@@ -76,6 +76,7 @@ public class Resumon : ScriptableObject
 {
     public Stats stats = new Stats();
     public Info info = new Info();
+    public Sprite sprite;
 
     public void attack(Resumon other)
     {
@@ -83,7 +84,7 @@ public class Resumon : ScriptableObject
         other.stats.SetCurHp(other.stats.GetCurHp() - stats.GetDmg());
     }
 
-    public string ToString()
+    public new string ToString()
     {
         return "No. " + info.ResuNum + " | Name: " + info.name + " |";
     }

@@ -20,7 +20,8 @@ MonoBehaviour:
     dmg: 5
   info:
     name: Tedotsu
-    ResuNum: 1
+    ResuNum: 3
     gender: Unknown
     behaviour: Timid
     lore: yes
+  sprite: {fileID: -4072904679742520207, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}

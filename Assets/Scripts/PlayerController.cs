@@ -57,6 +57,11 @@ public class PlayerController : MonoBehaviour
     Vector2 movement;
     public bool canMove = true;
 
+    private void Awake()
+    {
+        DontDestroyOnLoad(gameObject);
+    }
+
     // Start is called before the first frame update
     void Start()
     {
