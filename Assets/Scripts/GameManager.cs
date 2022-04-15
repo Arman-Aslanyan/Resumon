@@ -7,7 +7,8 @@ public class GameManager : MonoBehaviour
 {
     PlayerController player;
     public Resumon[] resumon = new Resumon[3];
-    float time;
+    public GameObject prefab;
+    float time = 2.5f;
 
     private void Awake()
     {
@@ -32,8 +33,8 @@ public class GameManager : MonoBehaviour
         player.isGrassed = player.GetGrassed();
         if (player.isGrassed && time >= 2.5f)
         {
-            Encounter();
             time = 0;
+            Encounter();
         }
         else
             time += Time.fixedDeltaTime;
@@ -49,7 +50,13 @@ public class GameManager : MonoBehaviour
         else if (rand <= 7)
             randResuNum = 1;
         else randResuNum = 2;
-        DisplayResumon.RenderResumon(resumon[randResuNum], Vector3.zero);
+        RenderResumon(resumon[randResuNum], Vector3.zero);
         print(resumon[randResuNum] + " | " + randResuNum);
+    }
+
+    public void RenderResumon(Resumon toRender, Vector3 pos)
+    {
+        GameObject obj = Instantiate(prefab, pos, Quaternion.identity);
+        obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
     }
 }
