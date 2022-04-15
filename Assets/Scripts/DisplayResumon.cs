@@ -2,13 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class DisplayResumon : MonoBehaviour
+[CreateAssetMenu(fileName = "DisplayResumon", menuName = "DisplayResumon")]
+public class DisplayResumon : ScriptableObject
 {
-    public Resumon resumon;
+    [SerializeField] public static GameObject prefab;
 
-    // Start is called before the first frame update
-    void Start()
+    public static void RenderResumon(Resumon toRender, Vector3 pos)
     {
-        print(resumon);
+        GameObject obj = Instantiate(prefab, pos, Quaternion.identity);
+        obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
     }
 }

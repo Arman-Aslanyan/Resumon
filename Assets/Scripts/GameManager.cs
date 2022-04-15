@@ -49,8 +49,7 @@ public class GameManager : MonoBehaviour
         else if (rand <= 7)
             randResuNum = 1;
         else randResuNum = 2;
-        SpriteRenderer spr = GetComponentInChildren<SpriteRenderer>();
-        spr.sprite = resumon[randResuNum].sprite;
+        DisplayResumon.RenderResumon(resumon[randResuNum], Vector3.zero);
         print(resumon[randResuNum] + " | " + randResuNum);
     }
 }
