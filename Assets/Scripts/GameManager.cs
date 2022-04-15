@@ -42,9 +42,15 @@ public class GameManager : MonoBehaviour
     public void Encounter()
     {
         SceneManager.LoadScene("Combat");
-        int randResuNum = Random.Range(0, resumon.Length);
+        int randResuNum;
+        float rand = Random.value;
+        if (rand < 0.4)
+            randResuNum = 0;
+        else if (rand <= 7)
+            randResuNum = 1;
+        else randResuNum = 2;
         SpriteRenderer spr = GetComponentInChildren<SpriteRenderer>();
         spr.sprite = resumon[randResuNum].sprite;
-        print(resumon[randResuNum]);
+        print(resumon[randResuNum] + " | " + randResuNum);
     }
 }
