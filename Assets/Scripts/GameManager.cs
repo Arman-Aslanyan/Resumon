@@ -30,8 +30,11 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
-
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            Reset();
+            SceneManager.LoadScene("Main");
+        }
     }
 
     //Called once per physics frame
@@ -48,14 +51,14 @@ public class GameManager : MonoBehaviour
 
     public void Encounter()
     {
-        SceneManager.LoadScene("Combat");
+        FindObjectOfType<LevelLoader>().LoadNextLevel();
         float rand = Random.value;
         int randNum;
         if (rand <= 0.65f) randNum = 0;
-        else if (rand <= 0.85f) randNum = 1;
+        else if (rand <= 0.9f) randNum = 1;
         else randNum = 2;
         player.isGrassed = false;
-        RenderResumon(resumon[randNum], Vector3.zero);
+        RenderResumon(resumon[randNum], new Vector3(2.5f, 2.8f));
         print(resumon[randNum] + " | " + randNum);
     }
 
@@ -64,5 +67,15 @@ public class GameManager : MonoBehaviour
         GameObject obj = transform.GetChild(0).gameObject;
         obj.transform.position = pos;
         obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
+    }
+
+    IEnumerator WaitForSeconds(float waitTime)
+    {
+        yield return new WaitForSeconds(waitTime);
+    }
+
+    private void Reset()
+    {
+        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
     }
 }
