@@ -69,7 +69,7 @@ public class GameManager : MonoBehaviour
         obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
     }
 
-    IEnumerator WaitForSeconds(float waitTime)
+    public IEnumerator WaitForSeconds(float waitTime)
     {
         yield return new WaitForSeconds(waitTime);
     }
