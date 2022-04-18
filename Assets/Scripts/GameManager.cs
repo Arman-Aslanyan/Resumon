@@ -7,7 +7,7 @@ public class GameManager : MonoBehaviour
 {
     GameManager INSTANCE;
     PlayerController player;
-    public Resumon[] resumon = new Resumon[3];
+    public Resumon[] WildResumon = new Resumon[3];
     public GameObject prefab;
     float time = 1;
 
@@ -43,23 +43,33 @@ public class GameManager : MonoBehaviour
         if (player.isGrassed && time >= 2.5f)
         {
             time = 0;
-            Encounter();
+            PreEncounter();
         }
         else if (time < 100)
             time += Time.fixedDeltaTime;
     }
 
-    public void Encounter()
+    public void PreEncounter()
     {
         FindObjectOfType<LevelLoader>().LoadNextLevel();
+    }
+
+    public void BeginEncounter()
+    {
         float rand = Random.value;
         int randNum;
         if (rand <= 0.65f) randNum = 0;
         else if (rand <= 0.9f) randNum = 1;
         else randNum = 2;
         player.isGrassed = false;
-        RenderResumon(resumon[randNum], new Vector3(2.5f, 2.8f));
-        print(resumon[randNum] + " | " + randNum);
+        RenderResumon(WildResumon[randNum], new Vector3(2.5f, 2.8f));
+        print(WildResumon[randNum] + " | " + randNum);
+    }
+
+    public bool AttemptToCatch(Resumon tryCatch)
+    {
+        float rand = Random.value;
+        return rand <= tryCatch.stats.GetCaptChance();
     }
 
     public void RenderResumon(Resumon toRender, Vector3 pos)
