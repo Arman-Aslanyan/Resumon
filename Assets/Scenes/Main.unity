@@ -152,10 +152,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 34360f1e5ce4ffe4cbf5db4c65956284, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  resumon:
-  - {fileID: 11400000, guid: a7059dc166e3d4f498e77e927019adc2, type: 2}
-  - {fileID: 11400000, guid: ee8ff2d3ff3875e4c85ebac4a27e73a2, type: 2}
-  - {fileID: 11400000, guid: 9877df4e6bd8be14ca9fb0b9d48afd0e, type: 2}
+  WildResumon:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   prefab: {fileID: 1047874317686250652, guid: ec94e8930aaa4394297ba519cb17e1e4, type: 3}
 --- !u!4 &142650728
 Transform:

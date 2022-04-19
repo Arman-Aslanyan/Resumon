@@ -31,7 +31,7 @@ public class Stats
         dmg = 1;
         this.captChance = 1;
     }
-
+    #region Getters & Setters
     public int GetLvl() { return lvl; }
     public int GetGold() { return gold; }
     public int GetMaxHp() { return maxHp; }
@@ -44,6 +44,7 @@ public class Stats
     public void SetCurHp(int curHp) { if (curHp >= 0) { this.curHp = curHp; } }
     public void SetDmg(int dmg) { this.dmg = dmg; }
     public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
+    #endregion
 }
 
 [System.Serializable]

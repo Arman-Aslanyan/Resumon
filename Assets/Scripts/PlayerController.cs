@@ -47,6 +47,7 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     Vector2 movement;
     public bool canMove = true;
+    private bool isMoving;
 
     // Start is called before the first frame update
     void Start()
@@ -59,18 +60,38 @@ public class PlayerController : MonoBehaviour
     // Update called once per frame
     void Update()
     {
-        movement.x = Input.GetAxisRaw("Horizontal");
-        movement.y = Input.GetAxisRaw("Vertical");
+        if (!isMoving)
+        {
+            movement.x = Input.GetAxisRaw("Horizontal");
+            movement.y = Input.GetAxisRaw("Vertical");
 
+            if (canMove && !movement.Equals(Vector2.zero))
+            {
+                var targetPos = transform.position;
+                targetPos.x += movement.x;
+                targetPos.y += movement.y;
+
+                StartCoroutine(Move(targetPos));
+            }
+        }
         //animator.SetFloat("Horizontal", movement.x);
         //animator.SetFloat("Vertical", movement.y);
         //animator.SetFloat("Speed", movement.sqrMagnitude);
     }
 
-    private void FixedUpdate()
+    IEnumerator Move(Vector3 targetPos)
     {
-        if (canMove)
-            rb.MovePosition(rb.position + movement * moveSpeed * Time.fixedDeltaTime);
+        isMoving = true;
+
+        while ((targetPos - transform.position).sqrMagnitude > Mathf.Epsilon)
+        {
+            transform.position = Vector3.MoveTowards(transform.position, targetPos, moveSpeed * Time.deltaTime);
+            yield return null;
+        }
+
+        transform.position = targetPos;
+
+        isMoving = false;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
