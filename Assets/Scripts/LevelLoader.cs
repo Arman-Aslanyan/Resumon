@@ -27,6 +27,6 @@ public class LevelLoader : MonoBehaviour
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(levelIndex);
-        FindObjectOfType<GameManager>().BeginEncounter();
+        //FindObjectOfType<GameManager>().BeginEncounter();
     }
 }

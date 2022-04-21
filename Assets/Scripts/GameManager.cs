@@ -5,17 +5,9 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
-    GameManager INSTANCE;
     PlayerController player;
     public Resumon[] WildResumon = new Resumon[3];
     public GameObject prefab;
-    float time = 1;
-
-    void Awake()
-    {
-        DontDestroyOnLoad(gameObject);
-        INSTANCE = this;
-    }
 
     // Start is called before the first frame update
     void Start()
@@ -37,19 +29,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    //Called once per physics frame
-    private void FixedUpdate()
-    {
-        if (player.isGrassed && time >= 2.5f)
-        {
-            time = 0;
-            PreEncounter();
-        }
-        else if (time < 100)
-            time += Time.fixedDeltaTime;
-    }
-
-    public void PreEncounter()
+    /*public void PreEncounter()
     {
         FindObjectOfType<LevelLoader>().LoadNextLevel();
     }
@@ -77,7 +57,7 @@ public class GameManager : MonoBehaviour
         GameObject obj = transform.GetChild(0).gameObject;
         obj.transform.position = pos;
         obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
-    }
+    }*/
 
     public IEnumerator WaitForSeconds(float waitTime)
     {

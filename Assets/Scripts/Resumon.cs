@@ -83,10 +83,10 @@ public class Resumon : ScriptableObject
     public Info info = new Info();
     public Sprite sprite;
 
-    public void attack(Resumon other)
+    public void Attack(Resumon other)
     {
         //To-Do:
-        other.stats.SetCurHp(other.stats.GetCurHp() - stats.GetDmg());
+        
     }
 
     public new string ToString()

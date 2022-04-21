@@ -92,18 +92,16 @@ public class PlayerController : MonoBehaviour
         transform.position = targetPos;
 
         isMoving = false;
+
+        CheckForEncounter();
     }
 
-    private void OnTriggerEnter2D(Collider2D other)
+    public void CheckForEncounter()
     {
-        if (other.CompareTag("Grass"))
+        if (Physics2D.OverlapCircle(transform.position, 0.2f, gCheck.mask) != null)
         {
-            isGrassed = true;
+            if (Random.Range(1, 201) <= 10)
+                print("Encountered Resumon");
         }
-    }
-
-    private void OnTriggerExit2D(Collider2D other)
-    {
-        isGrassed = false;
     }
 }
