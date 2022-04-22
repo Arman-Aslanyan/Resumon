@@ -101,7 +101,7 @@ public class PlayerController : MonoBehaviour
         if (Physics2D.OverlapCircle(transform.position, 0.2f, gCheck.mask) != null)
         {
             if (Random.Range(1, 201) <= 10)
-                print("Encountered Resumon");
+                GameManager.INSTANCE.PreEncounter();
         }
     }
 }

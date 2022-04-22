@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public static GameManager INSTANCE;
     PlayerController player;
     public Resumon[] WildResumon = new Resumon[3];
     public GameObject prefab;
@@ -12,6 +13,7 @@ public class GameManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        INSTANCE = this;
         player = FindObjectOfType<PlayerController>();
         GameManager[] objs = FindObjectsOfType<GameManager>();
         if (objs.Length > 1)
@@ -29,7 +31,7 @@ public class GameManager : MonoBehaviour
         }
     }
 
-    /*public void PreEncounter()
+    public void PreEncounter()
     {
         FindObjectOfType<LevelLoader>().LoadNextLevel();
     }
@@ -57,7 +59,7 @@ public class GameManager : MonoBehaviour
         GameObject obj = transform.GetChild(0).gameObject;
         obj.transform.position = pos;
         obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
-    }*/
+    }
 
     public IEnumerator WaitForSeconds(float waitTime)
     {
