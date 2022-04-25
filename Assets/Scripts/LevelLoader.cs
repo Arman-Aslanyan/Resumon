@@ -2,31 +2,30 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelLoader : MonoBehaviour
 {
     public Animator transition;
     public float transitionTime = 1;
+    public Canvas canvas;
 
-    // Update is called once per frame
-    void Update()
+    private void Start()
     {
-        if (Input.GetKeyDown(KeyCode.G))
-        {
-            LoadNextLevel();
-        }
+        canvas.enabled = false;
     }
 
-    public void LoadNextLevel()
+    public void StartEncounter()
     {
-        StartCoroutine(LoadLevel(SceneManager.GetActiveScene().buildIndex + 1));
+        StartCoroutine(StartTransition());
     }
 
-    public IEnumerator LoadLevel(int levelIndex)
+    IEnumerator StartTransition()
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(levelIndex);
-        //FindObjectOfType<GameManager>().BeginEncounter();
+        canvas.enabled = true;
+        FindObjectOfType<GameManager>().BeginEncounter();
+        transition.SetTrigger("End");
     }
 }

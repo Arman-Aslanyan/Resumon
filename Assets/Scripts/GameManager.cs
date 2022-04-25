@@ -33,7 +33,7 @@ public class GameManager : MonoBehaviour
 
     public void PreEncounter()
     {
-        FindObjectOfType<LevelLoader>().LoadNextLevel();
+        FindObjectOfType<LevelLoader>().StartEncounter();
     }
 
     public void BeginEncounter()
