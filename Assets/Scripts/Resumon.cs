@@ -81,7 +81,7 @@ public class Info
     }
 }
 
-[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon")]
+[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon/Create new Resumon")]
 public class Resumon : ScriptableObject
 {
     public Stats stats = new Stats();
