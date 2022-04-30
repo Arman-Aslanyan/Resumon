@@ -89,6 +89,7 @@ public class Resumon : ScriptableObject
     public Sprite sprite;
     [SerializeField] ResumonType type1;
     [SerializeField] ResumonType type2;
+    [SerializeField] List<Move> learnableMoves = new List<Move>();
 
     public void Attack(Resumon other)
     {
@@ -116,6 +117,7 @@ public enum ResumonType
     Ground,
     Flying,
     Psychic,
+    Dark,
     Bug,
     Rock,
     Ghost,

@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 91af8e467b2789249bb5101a6602a6a0, type: 3}
-  m_Name: Tetsu
+  m_Name: Ufiffi
   m_EditorClassIdentifier: 
   stats:
     lvl: 2
-    maxHp: 10
+    maxHp: 12
     curHp: 10
     atk: 1
     def: 1
@@ -23,15 +23,14 @@ MonoBehaviour:
     spd: 1
     captChance: 1
   info:
-    name: Tetsu
-    ResuNum: 2
+    name: Ufiffi
+    ResuNum: 4
     gender: Unknown
-    behaviour: Combative
-    lore: Blood Seeker
-  sprite: {fileID: 6496091103802532325, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}
-  type1: 0
-  type2: 0
+    behaviour: 
+    lore: appears to be rat-like, also never feels fully rested
+  sprite: {fileID: 21300000, guid: 0d5f0f3b37b71454688d01755234813a, type: 3}
+  type1: 1
+  type2: 12
   learnableMoves:
-  - {fileID: 11400000, guid: 2968d717b9c257b4e86cfb76b88968be, type: 2}
   - {fileID: 11400000, guid: ead9f1c6d96eb37468230fafe286d4ed, type: 2}
   - {fileID: 11400000, guid: 914e54e3dea57e842baa4e60739fbc88, type: 2}

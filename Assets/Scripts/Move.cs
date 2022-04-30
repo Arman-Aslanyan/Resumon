@@ -6,6 +6,7 @@ using UnityEngine;
 public class Move : ScriptableObject
 {
     [SerializeField] new string name;
+    [SerializeField] int lvlRequired;
 
     [TextArea] [SerializeField] string desc;
 

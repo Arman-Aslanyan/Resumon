@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 55a995e062f28a442a0e5a1a2c0bfb7b, type: 3}
-  m_Name: Strangle
+  m_Name: Menacing Glare
   m_EditorClassIdentifier: 
-  name: Strangle
-  lvlRequired: 0
-  desc: strangle thy opponent
+  name: Menacing Stare
+  lvlRequired: 5
+  desc: menacingly stare into thy opponents' eyes
   type: 1
-  power: 40
-  accuracy: 90
-  powerPoints: 20
-  maxPowPoints: 20
+  power: 50
+  accuracy: 95
+  powerPoints: 30
+  maxPowPoints: 30
