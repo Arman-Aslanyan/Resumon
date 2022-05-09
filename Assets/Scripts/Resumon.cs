@@ -18,14 +18,14 @@ public class Stats
     public Stats(int lvl, int maxHp, int atk, int def, int spAtk, int spDef, int spd)
         : this()
     {
-        this.lvl = lvl;
-        this.maxHp = maxHp;
-        this.curHp = maxHp;
-        this.atk = atk;
-        this.def = def;
-        this.spAtk = spAtk;
-        this.spDef = spDef;
-        this.spd = spd;
+        SetLvl(lvl);
+        SetMaxHp(maxHp);
+        SetCurHp(maxHp);
+        SetAtk(atk);
+        SetDef(def);
+        SetSpAtk(spAtk);
+        SetSpDef(spDef);
+        SetSpd(spd);
     }
 
     public Stats()
@@ -40,14 +40,37 @@ public class Stats
         spd = 1;
         this.captChance = 1;
     }
+
+    public void SetStatsTo(Stats other)
+    {
+        SetLvl(other.GetLvl());
+        SetMaxHp(other.GetMaxHp());
+        SetCurHp(other.GetCurHp());
+        SetAtk(other.GetAtk());
+        SetDef(other.GetDef());
+        SetSpAtk(other.GetSpAtk());
+        SetSpDef(other.GetSpDef());
+        SetSpd(other.GetSpd());
+    }
+
     #region Getters & Setters
     public int GetLvl() { return lvl; }
     public int GetMaxHp() { return maxHp; }
     public int GetCurHp() { return curHp; }
+    public int GetAtk() { return atk; }
+    public int GetDef() { return def; }
+    public int GetSpAtk() { return spAtk; }
+    public int GetSpDef() { return spDef; }
+    public int GetSpd() { return spd; }
     public float GetCaptChance() { return captChance; }
     public void SetLvl(int lvl) { if (lvl >= 1) { this.lvl = lvl; } }
     public void SetMaxHp(int maxHp) { if (maxHp >= 1) { this.maxHp = maxHp; } }
     public void SetCurHp(int curHp) { if (curHp >= 0) { this.curHp = curHp; } }
+    public void SetAtk(int atk) { if (atk >= 0 ) { this.atk = atk; } }
+    public void SetDef(int def) { this.def = def; }
+    public void SetSpAtk(int spAtk) { if (spAtk >= 0) { this.spAtk = spAtk; } }
+    public void SetSpDef(int spDef) { this.spDef = spDef; }
+    public void SetSpd (int spd) { if (spd >= 0) { this.spd = spd; } }
     public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
     #endregion
 }
@@ -79,6 +102,15 @@ public class Info
         behaviour = null;
         lore = null;
     }
+
+    public void SetInfoTo(Info other)
+    {
+        name = other.name;
+        ResuNum = other.ResuNum;
+        gender = other.gender;
+        behaviour = other.behaviour;
+        lore = other.lore;
+    }
 }
 
 [CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon/Create new Resumon")]
@@ -94,7 +126,15 @@ public class Resumon : ScriptableObject
     public void Attack(Resumon other)
     {
         //To-Do:
-        
+    }
+
+    public void SetResuTo(Resumon other)
+    {
+        stats.SetStatsTo(other.stats);
+        info.SetInfoTo(other.info);
+        sprite = other.sprite;
+        type1 = other.type1;
+        type2 = other.type2;
     }
 
     public new string ToString()

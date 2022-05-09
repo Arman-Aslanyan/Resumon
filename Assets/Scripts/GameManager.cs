@@ -48,10 +48,27 @@ public class GameManager : MonoBehaviour
         print(WildResumon[randNum] + " | " + randNum);
     }
 
-    public bool AttemptToCatch(Resumon tryCatch)
+    public void Caught(Resumon caught)
     {
-        float rand = Random.value;
-        return rand <= tryCatch.stats.GetCaptChance();
+
+    }
+
+    public void AttemptToCatch(Resumon resumon)
+    {
+        if (TryCatch(resumon))
+        {
+            //Play animation of catching here
+            Caught(resumon);
+        }
+        else
+        {
+            //Otherwise play failed animation
+        }
+    }
+    
+    public bool TryCatch(Resumon tryCatch)
+    {
+        return Random.value <= tryCatch.stats.GetCaptChance();
     }
 
     public void RenderResumon(Resumon toRender, Vector3 pos)

@@ -1,0 +1,35 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 91af8e467b2789249bb5101a6602a6a0, type: 3}
+  m_Name: Dazufuhema
+  m_EditorClassIdentifier: 
+  stats:
+    lvl: 100
+    maxHp: 500
+    curHp: 450
+    atk: 1
+    def: 1
+    spAtk: 1
+    spDef: 1
+    spd: 1
+    captChance: 1
+  info:
+    name: Dazufuhema
+    ResuNum: 6
+    gender: Unknown
+    behaviour: U#$&^w&
+    lore: ",yRdSqAZEy\xE41.UGM<P\xFC!sy<)AT2G.X\xDCo(ZPL.\xE47CU0'Xg.<0hc4:znV#%4#:\xC4yn\xDCv;L4x(4m$z8q(DaX7o\"Y_M*)n\xC4eM>CYDeJp)M9'4cp3io<d*\xD6K3bmc4.hd"
+  sprite: {fileID: 0}
+  type1: 11
+  type2: 12
+  learnableMoves:
+  - {fileID: 0}
