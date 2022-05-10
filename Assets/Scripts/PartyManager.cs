@@ -8,6 +8,18 @@ public class PartyManager : MonoBehaviour
     [SerializeField] [Range(0, 999)] private int ResuBalls = 10;
     public List<Resumon> stored = new List<Resumon>();
 
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            Resumon resu = FindObjectOfType<GameManager>().enemyResu;
+            if (resu != null)
+            {
+                SetPartyMemberTo(resu);
+            }
+        }
+    }
+
     public void SetPartyMemberTo(Resumon resu)
     {
         int index = FindOpenPartyIndex();
@@ -15,16 +27,6 @@ public class PartyManager : MonoBehaviour
             party[index].SetResuTo(resu);
         else
             stored.Add(resu);
-    }
-
-    public bool CanSetPartyMember()
-    {
-        foreach (Resumon resumon in party)
-        {
-            if (resumon != null)
-                return true;
-        }
-        return false;
     }
 
     public int FindOpenPartyIndex()

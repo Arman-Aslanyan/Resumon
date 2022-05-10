@@ -183,10 +183,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   WildResumon:
-  - {fileID: 11400000, guid: a7059dc166e3d4f498e77e927019adc2, type: 2}
-  - {fileID: 11400000, guid: ee8ff2d3ff3875e4c85ebac4a27e73a2, type: 2}
-  - {fileID: 11400000, guid: 9877df4e6bd8be14ca9fb0b9d48afd0e, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   prefab: {fileID: 1047874317686250652, guid: ec94e8930aaa4394297ba519cb17e1e4, type: 3}
+  enemyObj: {fileID: 0}
+  enemyResu: {fileID: 0}
 --- !u!4 &142650728
 Transform:
   m_ObjectHideFlags: 0
@@ -663,6 +665,7 @@ GameObject:
   m_Component:
   - component: {fileID: 713447492}
   - component: {fileID: 713447493}
+  - component: {fileID: 713447494}
   m_Layer: 0
   m_Name: Enemy
   m_TagString: Untagged
@@ -735,6 +738,36 @@ SpriteRenderer:
   m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &713447494
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 713447491}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  template: {fileID: 0}
+  stats:
+    lvl: 0
+    maxHp: 10
+    curHp: 10
+    atk: 1
+    def: 1
+    spAtk: 1
+    spDef: 1
+    spd: 1
+    captChance: 1
+  info:
+    name: 
+    ResuNum: 5
+    gender: 
+    behaviour: 
+    lore: 
+  sprite: {fileID: 0}
 --- !u!1 &951060820
 GameObject:
   m_ObjectHideFlags: 0
@@ -2114,6 +2147,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   ResuBalls: 10
+  stored: []
 --- !u!4 &1948137206
 Transform:
   m_ObjectHideFlags: 0

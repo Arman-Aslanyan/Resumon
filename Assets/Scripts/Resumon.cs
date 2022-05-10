@@ -28,6 +28,13 @@ public class Stats
         SetSpd(spd);
     }
 
+    public Stats(ResumonBase template)
+        : this(template.GetLvl(), template.GetMaxHp(), template.GetAtk(), template.GetDef(),
+               template.GetSpAtk(), template.GetSpDef(), template.GetSpd())
+    {
+        Debug.Log("constructor");
+    }
+
     public Stats()
     {
         lvl = 0;
@@ -66,11 +73,11 @@ public class Stats
     public void SetLvl(int lvl) { if (lvl >= 1) { this.lvl = lvl; } }
     public void SetMaxHp(int maxHp) { if (maxHp >= 1) { this.maxHp = maxHp; } }
     public void SetCurHp(int curHp) { if (curHp >= 0) { this.curHp = curHp; } }
-    public void SetAtk(int atk) { if (atk >= 0 ) { this.atk = atk; } }
+    public void SetAtk(int atk) { if (atk >= 0) { this.atk = atk; } }
     public void SetDef(int def) { this.def = def; }
     public void SetSpAtk(int spAtk) { if (spAtk >= 0) { this.spAtk = spAtk; } }
     public void SetSpDef(int spDef) { this.spDef = spDef; }
-    public void SetSpd (int spd) { if (spd >= 0) { this.spd = spd; } }
+    public void SetSpd(int spd) { if (spd >= 0) { this.spd = spd; } }
     public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
     #endregion
 }
@@ -94,6 +101,12 @@ public class Info
         this.lore = lore;
     }
 
+    public Info(ResumonBase template)
+        : this(template.name, template.ResuNum, template.gender, template.behaviour, template.lore)
+    {
+        Debug.Log("constructor");
+    }
+
     public Info()
     {
         name = null;
@@ -113,15 +126,29 @@ public class Info
     }
 }
 
-[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon/Create new Resumon")]
-public class Resumon : ScriptableObject
+public class Resumon : MonoBehaviour
 {
-    public Stats stats = new Stats();
-    public Info info = new Info();
+    public ResumonBase template;
+    public Stats stats;
+    public Info info;
     public Sprite sprite;
-    [SerializeField] ResumonType type1;
-    [SerializeField] ResumonType type2;
-    [SerializeField] List<Move> learnableMoves = new List<Move>();
+    ResumonType type1;
+    ResumonType type2;
+    
+    public Resumon(ResumonBase template)
+    {
+        this.template = template;
+    }
+
+    // Start is called before the first frame update
+    void Start()
+    {
+        stats = new Stats(template);
+        info = new Info(template);
+        sprite = template.sprite;
+        type1 = template.type1;
+        type2 = template.type2;
+    }
 
     public void Attack(Resumon other)
     {
@@ -137,29 +164,12 @@ public class Resumon : ScriptableObject
         type2 = other.type2;
     }
 
-    public new string ToString()
+    public void SetInfoTo(Resumon other)
     {
-        return "No. " + info.ResuNum + " | Name: " + info.name + " |";
+        info.name = other.name;
+        info.ResuNum = other.info.ResuNum;
+        info.gender = other.info.gender;
+        info.behaviour = other.info.behaviour;
+        info.lore = other.info.lore;
     }
-}
-
-public enum ResumonType
-{
-    None,
-    Normal,
-    Fire,
-    Water,
-    Electric,
-    Grass,
-    Ice,
-    Fighting,
-    Poison,
-    Ground,
-    Flying,
-    Psychic,
-    Dark,
-    Bug,
-    Rock,
-    Ghost,
-    Dragon
 }
