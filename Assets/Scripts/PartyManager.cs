@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class PartyManager : MonoBehaviour
 {
+    [Range(0, 999)] public int ResuBalls = 10;
     public Resumon[] party = new Resumon[6];
-    [SerializeField] [Range(0, 999)] private int ResuBalls = 10;
     public List<Resumon> stored = new List<Resumon>();
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Resumon resu = FindObjectOfType<GameManager>().enemyResu;
+            Resumon resu = FindObjectOfType<GameManager>().enemyObj.GetComponent<Resumon>();
             if (resu != null)
             {
                 SetPartyMemberTo(resu);
@@ -22,11 +22,18 @@ public class PartyManager : MonoBehaviour
 
     public void SetPartyMemberTo(Resumon resu)
     {
+        print("test" + ResuBalls);
         int index = FindOpenPartyIndex();
         if (index >= 0)
-            party[index].SetResuTo(resu);
+        {
+            Resumon caught = new Resumon(resu.template);
+            gameObject.transform.GetChild(0).GetComponent<Resumon>().SetResuTo(caught);
+            party[index] = gameObject.transform.GetChild(index).GetComponent<Resumon>();
+            print(party[index] + "      |      " + gameObject.transform.GetChild(0).GetComponent<Resumon>());
+        }
         else
             stored.Add(resu);
+        ResuBalls--;
     }
 
     public int FindOpenPartyIndex()

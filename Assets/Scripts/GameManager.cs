@@ -10,7 +10,7 @@ public class GameManager : MonoBehaviour
     public ResumonBase[] WildResumon = new ResumonBase[3];
     public GameObject prefab;
     [HideInInspector] public GameObject enemyObj;
-    [HideInInspector] public Resumon enemyResu;
+    //[HideInInspector] public Resumon enemyResu;
 
     // Start is called before the first frame update
     void Start()
@@ -18,7 +18,6 @@ public class GameManager : MonoBehaviour
         INSTANCE = this;
         player = FindObjectOfType<PlayerController>();
         enemyObj = transform.GetChild(0).gameObject;
-        enemyResu = enemyObj.GetComponent<Resumon>();
         GameManager[] objs = FindObjectsOfType<GameManager>();
         if (objs.Length > 1)
             for (int i = 1; i < objs.Length; i++)
@@ -77,17 +76,17 @@ public class GameManager : MonoBehaviour
 
     public void RenderResumon(ResumonBase toRender, Vector3 pos)
     {
-        GameObject obj = transform.GetChild(0).gameObject;
-        obj.transform.position = pos;
-        obj.GetComponent<SpriteRenderer>().sprite = toRender.sprite;
-        string resuName = toRender.name;
-        foreach (ResumonBase wildResu in WildResumon)
-        {
-            if (wildResu.name.Equals(resuName))
-            {
-                enemyResu = new Resumon(wildResu);
-            }
-        }
+        Resumon resu = new Resumon(toRender);
+        enemyObj.transform.position = pos;
+        Destroy(enemyObj.GetComponent<Resumon>());
+        enemyObj.AddComponent<Resumon>();
+        Resumon enemyResu = enemyObj.GetComponent<Resumon>();
+        enemyResu.template = toRender;
+        enemyResu.stats.SetStatsTo(resu.stats);
+        enemyResu.info.SetInfoTo(resu.info);
+        enemyResu.sprite = resu.sprite;
+        enemyResu.type1 = resu.type1;
+        enemyResu.type2 = resu.type2;
     }
 
     public IEnumerator WaitForSeconds(float waitTime)

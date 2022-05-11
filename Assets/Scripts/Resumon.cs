@@ -132,22 +132,27 @@ public class Resumon : MonoBehaviour
     public Stats stats;
     public Info info;
     public Sprite sprite;
-    ResumonType type1;
-    ResumonType type2;
+    public ResumonType type1;
+    public ResumonType type2;
     
     public Resumon(ResumonBase template)
     {
         this.template = template;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
         stats = new Stats(template);
         info = new Info(template);
         sprite = template.sprite;
         type1 = template.type1;
         type2 = template.type2;
+    }
+
+    public Resumon()
+    {
+        template = null;
+        stats = new Stats();
+        info = new Info();
+        sprite = null;
+        type1 = ResumonType.None;
+        type2 = ResumonType.None;
     }
 
     public void Attack(Resumon other)
@@ -157,19 +162,11 @@ public class Resumon : MonoBehaviour
 
     public void SetResuTo(Resumon other)
     {
+        print("AAAAAAAAAAAAAAAAAAAA");
         stats.SetStatsTo(other.stats);
         info.SetInfoTo(other.info);
         sprite = other.sprite;
         type1 = other.type1;
         type2 = other.type2;
-    }
-
-    public void SetInfoTo(Resumon other)
-    {
-        info.name = other.name;
-        info.ResuNum = other.info.ResuNum;
-        info.gender = other.info.gender;
-        info.behaviour = other.info.behaviour;
-        info.lore = other.info.lore;
     }
 }
