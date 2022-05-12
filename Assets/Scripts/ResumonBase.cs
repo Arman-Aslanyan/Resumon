@@ -2,20 +2,51 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon/Create new Resumon")]
-public class ResumonBase : ScriptableObject
+[System.Serializable]
+public class Stats
 {
-    //public Stats stats = new Stats();
-    //Stats
-    private int lvl;
-    private int maxHp;
-    private int curHp;
-    private int atk;
-    private int def;
-    private int spAtk;
-    private int spDef;
-    private int spd;
+    public int lvl;
+    public int maxHp;
+    public int curHp;
+    public int atk;
+    public int def;
+    public int spAtk;
+    public int spDef;
+    public int spd;
     [SerializeField] [Range(0, 1)] public float captChance;
+
+    public Stats(int lvl, int maxHp, int atk, int def, int spAtk, int spDef, int spd)
+        : this()
+    {
+        SetLvl(lvl);
+        SetMaxHp(maxHp);
+        SetCurHp(maxHp);
+        SetAtk(atk);
+        SetDef(def);
+        SetSpAtk(spAtk);
+        SetSpDef(spDef);
+        SetSpd(spd);
+    }
+
+    public Stats(ResumonBase _base)
+        : this(_base.stats.GetLvl(), _base.stats.GetMaxHp(), _base.stats.GetAtk(), _base.stats.GetDef(),
+               _base.stats.GetSpAtk(), _base.stats.GetSpDef(), _base.stats.GetSpd())
+    {
+        Debug.Log("constructor");
+    }
+
+    public Stats()
+    {
+        lvl = 0;
+        maxHp = 10;
+        curHp = maxHp;
+        atk = 1;
+        def = 1;
+        spAtk = 1;
+        spDef = 1;
+        spd = 1;
+        this.captChance = 1;
+    }
 
     public void SetStatsTo(Stats other)
     {
@@ -49,18 +80,41 @@ public class ResumonBase : ScriptableObject
     public void SetSpd(int spd) { if (spd >= 0) { this.spd = spd; } }
     public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
     #endregion
+}
 
-    //public Info info = new Info();
-    //Info
-    public new string name;
+[System.Serializable]
+public class Info
+{
+    public string name;
     public int ResuNum;
     public string gender;
     public string behaviour;
     [TextArea] public string lore;
-    public Sprite sprite;
-    public ResumonType type1;
-    public ResumonType type2;
-    [SerializeField] List<Move> learnableMoves = new List<Move>();
+
+    public Info(string name, int ResuNum, string gender, string behaviour, string lore)
+        : this()
+    {
+        this.name = name;
+        this.ResuNum = ResuNum;
+        this.gender = gender;
+        this.behaviour = behaviour;
+        this.lore = lore;
+    }
+
+    public Info(ResumonBase _base)
+        : this(_base.name, _base.info.ResuNum, _base.info.gender, _base.info.behaviour, _base.info.lore)
+    {
+        Debug.Log("constructor");
+    }
+
+    public Info()
+    {
+        name = null;
+        ResuNum = 5;
+        gender = null;
+        behaviour = null;
+        lore = null;
+    }
 
     public void SetInfoTo(Info other)
     {
@@ -70,10 +124,21 @@ public class ResumonBase : ScriptableObject
         behaviour = other.behaviour;
         lore = other.lore;
     }
+}
+
+[CreateAssetMenu(fileName = "New Resumon", menuName = "Resumon/Create new Resumon")]
+public class ResumonBase : ScriptableObject
+{
+    public Stats stats = new Stats();
+    public Info info = new Info();
+    public Sprite sprite;
+    public ResumonType type1;
+    public ResumonType type2;
+    [SerializeField] List<Move> learnableMoves = new List<Move>();
 
     public new string ToString()
     {
-        return "No. " + ResuNum + " | Name: " + name + " |";
+        return "No. " + info.ResuNum + " | Name: " + info.name + " |";
     }
 }
 

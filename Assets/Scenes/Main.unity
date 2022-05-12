@@ -182,7 +182,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -813,7 +812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -862,7 +860,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2192,7 +2189,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2255,7 +2251,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2318,7 +2313,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2514,7 +2508,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  template: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10

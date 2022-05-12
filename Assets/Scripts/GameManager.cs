@@ -76,17 +76,11 @@ public class GameManager : MonoBehaviour
 
     public void RenderResumon(ResumonBase toRender, Vector3 pos)
     {
-        Resumon resu = new Resumon(toRender);
-        enemyObj.transform.position = pos;
-        Destroy(enemyObj.GetComponent<Resumon>());
+        if (enemyObj.TryGetComponent(out Resumon resumon))
+            Destroy(resumon);
         enemyObj.AddComponent<Resumon>();
-        Resumon enemyResu = enemyObj.GetComponent<Resumon>();
-        enemyResu.template = toRender;
-        enemyResu.stats.SetStatsTo(resu.stats);
-        enemyResu.info.SetInfoTo(resu.info);
-        enemyResu.sprite = resu.sprite;
-        enemyResu.type1 = resu.type1;
-        enemyResu.type2 = resu.type2;
+        Resumon setTo = enemyObj.GetComponent<Resumon>();
+        setTo.SetResuTo(toRender);
     }
 
     public IEnumerator WaitForSeconds(float waitTime)

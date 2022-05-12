@@ -29,7 +29,7 @@ MonoBehaviour:
     behaviour: Looks-Menacing
     lore: run
   sprite: {fileID: -2990659816645563417, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}
-  type1: 0
+  type1: 11
   type2: 0
   learnableMoves:
   - {fileID: 11400000, guid: 2968d717b9c257b4e86cfb76b88968be, type: 2}
