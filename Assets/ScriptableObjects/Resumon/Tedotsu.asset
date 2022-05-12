@@ -31,7 +31,4 @@ MonoBehaviour:
   sprite: {fileID: 21300000, guid: 1dc7704cdc2eb7a439c442c6a2384767, type: 3}
   type1: 11
   type2: 12
-  learnableMoves:
-  - {fileID: 11400000, guid: 2968d717b9c257b4e86cfb76b88968be, type: 2}
-  - {fileID: 11400000, guid: ead9f1c6d96eb37468230fafe286d4ed, type: 2}
-  - {fileID: 11400000, guid: 914e54e3dea57e842baa4e60739fbc88, type: 2}
+  rarity: 2

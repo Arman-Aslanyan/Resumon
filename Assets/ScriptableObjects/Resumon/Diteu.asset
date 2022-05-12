@@ -31,8 +31,4 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 10
   type2: 3
-  learnableMoves:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
+  rarity: 3

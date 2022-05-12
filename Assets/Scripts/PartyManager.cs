@@ -27,7 +27,7 @@ public class PartyManager : MonoBehaviour
         if (index >= 0)
         {
             Resumon caught = new Resumon(resu._base);
-            gameObject.transform.GetChild(0).GetComponent<Resumon>().SetResuTo(caught);
+            gameObject.transform.GetChild(index).GetComponent<Resumon>().SetResuTo(caught);
             party[index] = gameObject.transform.GetChild(index).GetComponent<Resumon>();
             print(party[index] + "      |      " + gameObject.transform.GetChild(0).GetComponent<Resumon>());
         }

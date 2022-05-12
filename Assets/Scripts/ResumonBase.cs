@@ -28,9 +28,9 @@ public class Stats
         SetSpd(spd);
     }
 
-    public Stats(ResumonBase _base)
-        : this(_base.stats.GetLvl(), _base.stats.GetMaxHp(), _base.stats.GetAtk(), _base.stats.GetDef(),
-               _base.stats.GetSpAtk(), _base.stats.GetSpDef(), _base.stats.GetSpd())
+    public Stats(ResumonBase template)
+        : this(template.stats.GetLvl(), template.stats.GetMaxHp(), template.stats.GetAtk(), template.stats.GetDef(),
+               template.stats.GetSpAtk(), template.stats.GetSpDef(), template.stats.GetSpd())
     {
         Debug.Log("constructor");
     }
@@ -81,7 +81,6 @@ public class Stats
     public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
     #endregion
 }
-
 [System.Serializable]
 public class Info
 {
@@ -101,8 +100,8 @@ public class Info
         this.lore = lore;
     }
 
-    public Info(ResumonBase _base)
-        : this(_base.name, _base.info.ResuNum, _base.info.gender, _base.info.behaviour, _base.info.lore)
+    public Info(ResumonBase template)
+        : this(template.info.name, template.info.ResuNum, template.info.gender, template.info.behaviour, template.info.lore)
     {
         Debug.Log("constructor");
     }
@@ -134,12 +133,21 @@ public class ResumonBase : ScriptableObject
     public Sprite sprite;
     public ResumonType type1;
     public ResumonType type2;
-    [SerializeField] List<Move> learnableMoves = new List<Move>();
+    public ResumonRarity rarity;
 
     public new string ToString()
     {
         return "No. " + info.ResuNum + " | Name: " + info.name + " |";
     }
+}
+
+public enum ResumonRarity
+{
+    Common,
+    Uncommon,
+    Rare,
+    Legendary,
+    Mythical
 }
 
 public enum ResumonType

@@ -30,8 +30,5 @@ MonoBehaviour:
     lore: Blood Seeker
   sprite: {fileID: 6496091103802532325, guid: 4a24388ade0e5fd4689832ae3af086e3, type: 3}
   type1: 11
-  type2: 0
-  learnableMoves:
-  - {fileID: 11400000, guid: 2968d717b9c257b4e86cfb76b88968be, type: 2}
-  - {fileID: 11400000, guid: ead9f1c6d96eb37468230fafe286d4ed, type: 2}
-  - {fileID: 11400000, guid: 914e54e3dea57e842baa4e60739fbc88, type: 2}
+  type2: 1
+  rarity: 1

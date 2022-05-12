@@ -182,6 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -201,6 +202,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &86332780
 Transform:
   m_ObjectHideFlags: 0
@@ -812,6 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -831,6 +834,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!1 &775525399
 GameObject:
   m_ObjectHideFlags: 0
@@ -860,6 +864,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -879,6 +884,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &775525401
 Transform:
   m_ObjectHideFlags: 0
@@ -2189,6 +2195,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2208,6 +2215,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &1524337938
 Transform:
   m_ObjectHideFlags: 0
@@ -2251,6 +2259,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2270,6 +2279,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &1783734921
 Transform:
   m_ObjectHideFlags: 0
@@ -2313,6 +2323,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2332,6 +2343,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &1815545921
 Transform:
   m_ObjectHideFlags: 0
@@ -2508,6 +2520,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1f725b39832b844aa534d7d18d3ee8e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _base: {fileID: 0}
   stats:
     lvl: 0
     maxHp: 10
@@ -2527,6 +2540,7 @@ MonoBehaviour:
   sprite: {fileID: 0}
   type1: 0
   type2: 0
+  rarity: 0
 --- !u!4 &1954920085
 Transform:
   m_ObjectHideFlags: 0
