@@ -10,11 +10,13 @@ public class GameManager : MonoBehaviour
     public ResumonBase[] WildResumon = new ResumonBase[3];
     public GameObject prefab;
     [HideInInspector] public GameObject enemyObj;
+    PartyManager partyManager;
 
     // Start is called before the first frame update
     void Start()
     {
         INSTANCE = this;
+        partyManager = FindObjectOfType<PartyManager>();
         player = FindObjectOfType<PlayerController>();
         enemyObj = transform.GetChild(0).gameObject;
         GameManager[] objs = FindObjectsOfType<GameManager>();
@@ -54,14 +56,9 @@ public class GameManager : MonoBehaviour
         RenderResumon(WildResumon[randNum], new Vector3(2.5f, 2.8f));
     }
 
-    public void Caught(Resumon caught)
-    {
-        //To Be Implemented
-    }
-
     public void AttemptToCatch(Resumon resumon)
     {
-        //To Be Implemented
+        //Not fully implemented
         if (TryCatch(resumon))
         {
             //Play animation of catching here
@@ -72,10 +69,14 @@ public class GameManager : MonoBehaviour
             //Otherwise play failed animation
         }
     }
-    
-    public bool TryCatch(Resumon tryCatch)
+
+    public void Caught(Resumon caught)
     {
-        //To Be Implemented
+        partyManager.SetPartyMemberTo(caught);
+    }
+
+    private bool TryCatch(Resumon tryCatch)
+    {
         return Random.value <= tryCatch.stats.GetCaptChance();
     }
 

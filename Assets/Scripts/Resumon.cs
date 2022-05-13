@@ -12,14 +12,14 @@ public class Resumon : MonoBehaviour
     public ResumonType type2;
     public ResumonRarity rarity;
     
-    public Resumon(ResumonBase template)
+    public Resumon(ResumonBase _base)
     {
-        this._base = template;
-        stats = new Stats(template);
-        info = new Info(template);
-        sprite = template.sprite;
-        type1 = template.type1;
-        type2 = template.type2;
+        this._base = _base;
+        stats = new Stats(_base);
+        info = new Info(_base);
+        sprite = _base.sprite;
+        type1 = _base.type1;
+        type2 = _base.type2;
     }
 
     public Resumon()

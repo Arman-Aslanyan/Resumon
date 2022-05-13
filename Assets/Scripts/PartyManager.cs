@@ -6,34 +6,30 @@ public class PartyManager : MonoBehaviour
 {
     [Range(0, 999)] public int ResuBalls = 10;
     public Resumon[] party = new Resumon[6];
-    public List<Resumon> stored = new List<Resumon>();
+    //public List<Resumon> stored = new List<Resumon>();
 
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.C))
         {
-            Resumon resu = FindObjectOfType<GameManager>().enemyObj.GetComponent<Resumon>();
-            if (resu != null)
+            Resumon resu = GameManager.INSTANCE.enemyObj.GetComponent<Resumon>();
+            if (resu != null) 
             {
-                SetPartyMemberTo(resu);
+                GameManager.INSTANCE.AttemptToCatch(resu);
             }
         }
     }
 
     public void SetPartyMemberTo(Resumon resu)
     {
-        print("test" + ResuBalls);
         int index = FindOpenPartyIndex();
-        if (index >= 0)
+        if (index >= 0 && ResuBalls > 0)
         {
             Resumon caught = new Resumon(resu._base);
             gameObject.transform.GetChild(index).GetComponent<Resumon>().SetResuTo(caught);
             party[index] = gameObject.transform.GetChild(index).GetComponent<Resumon>();
-            print(party[index] + "      |      " + gameObject.transform.GetChild(0).GetComponent<Resumon>());
+            ResuBalls--;
         }
-        else
-            stored.Add(resu);
-        ResuBalls--;
     }
 
     public int FindOpenPartyIndex()
@@ -48,7 +44,7 @@ public class PartyManager : MonoBehaviour
         return -1;
     }
 
-    #region Getters
+    #region Getters & Setters
     public int GetResuNumInParty()
     {
         int resu = 0;
@@ -59,8 +55,6 @@ public class PartyManager : MonoBehaviour
     }
 
     public int GetResuBalls() { return ResuBalls; }
-    #endregion
-    #region Setters
     public void SetResuBalls(int amount)
     {
         this.ResuBalls = amount;

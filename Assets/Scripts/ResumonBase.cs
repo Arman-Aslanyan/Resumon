@@ -32,7 +32,7 @@ public class Stats
         : this(template.stats.GetLvl(), template.stats.GetMaxHp(), template.stats.GetAtk(), template.stats.GetDef(),
                template.stats.GetSpAtk(), template.stats.GetSpDef(), template.stats.GetSpd())
     {
-        Debug.Log("constructor");
+        
     }
 
     public Stats()
@@ -58,6 +58,7 @@ public class Stats
         SetSpAtk(other.GetSpAtk());
         SetSpDef(other.GetSpDef());
         SetSpd(other.GetSpd());
+        SetCaptChance(other.GetCaptChance());
     }
 
     #region Getters & Setters
@@ -78,7 +79,7 @@ public class Stats
     public void SetSpAtk(int spAtk) { if (spAtk >= 0) { this.spAtk = spAtk; } }
     public void SetSpDef(int spDef) { this.spDef = spDef; }
     public void SetSpd(int spd) { if (spd >= 0) { this.spd = spd; } }
-    public void SetCaptChance(int captChance) { if (captChance > 0) { this.captChance = captChance; } }
+    public void SetCaptChance(float captChance) { if (captChance > 0) { this.captChance = captChance; } }
     #endregion
 }
 [System.Serializable]
@@ -103,7 +104,7 @@ public class Info
     public Info(ResumonBase template)
         : this(template.info.name, template.info.ResuNum, template.info.gender, template.info.behaviour, template.info.lore)
     {
-        Debug.Log("constructor");
+        
     }
 
     public Info()

@@ -21,7 +21,7 @@ MonoBehaviour:
     spAtk: 1
     spDef: 1
     spd: 1
-    captChance: 1
+    captChance: 0
   info:
     name: Tedotsu
     ResuNum: 3
