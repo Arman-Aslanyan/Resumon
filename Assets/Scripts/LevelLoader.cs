@@ -17,15 +17,21 @@ public class LevelLoader : MonoBehaviour
 
     public void StartEncounter()
     {
-        StartCoroutine(StartTransition());
+        StartCoroutine(StartTransition(true));
     }
 
-    IEnumerator StartTransition()
+    public void EndEncounter()
+    {
+        StartCoroutine(StartTransition(false));
+    }
+
+    IEnumerator StartTransition(bool enableUI)
     {
         transition.SetTrigger("Start");
         yield return new WaitForSeconds(transitionTime);
-        canvas.enabled = true;
-        FindObjectOfType<GameManager>().BeginEncounter();
+        canvas.enabled = enableUI;
+        if (enableUI) //Also means that an encounter should begin
+            FindObjectOfType<GameManager>().BeginEncounter();
         transition.SetTrigger("End");
     }
 }

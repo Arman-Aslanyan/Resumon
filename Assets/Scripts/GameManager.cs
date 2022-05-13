@@ -1,14 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.SceneManagement;
+using TMPro;
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager INSTANCE;
     PlayerController player;
     public ResumonBase[] WildResumon = new ResumonBase[3];
-    public GameObject prefab;
+    public TMP_Text resuNameText;
     [HideInInspector] public GameObject enemyObj;
     PartyManager partyManager;
 
@@ -23,16 +23,6 @@ public class GameManager : MonoBehaviour
         if (objs.Length > 1)
             for (int i = 1; i < objs.Length; i++)
                 Destroy(objs[i].gameObject);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.R))
-        {
-            Reset();
-            SceneManager.LoadScene("Main");
-        }
     }
 
     public void PreEncounter()
@@ -56,8 +46,9 @@ public class GameManager : MonoBehaviour
         RenderResumon(WildResumon[randNum], new Vector3(2.5f, 2.8f));
     }
 
-    public void AttemptToCatch(Resumon resumon)
+    public void AttemptToCatch()
     {
+        Resumon resumon = enemyObj.GetComponent<Resumon>();
         //Not fully implemented
         if (TryCatch(resumon))
         {
@@ -73,6 +64,7 @@ public class GameManager : MonoBehaviour
     public void Caught(Resumon caught)
     {
         partyManager.SetPartyMemberTo(caught);
+        ExitEncounter();
     }
 
     private bool TryCatch(Resumon tryCatch)
@@ -84,10 +76,21 @@ public class GameManager : MonoBehaviour
     {
         Resumon resu = new Resumon(toRender);
         enemyObj.transform.position = pos;
-        Resumon enemyResu = enemyObj.GetComponent<Resumon>();
+        Resumon enemyResu;
+        if (enemyObj.TryGetComponent(out Resumon tempResu) == false)
+            enemyObj.AddComponent<Resumon>();
+        enemyResu = enemyObj.GetComponent<Resumon>();
         enemyResu.SetResuTo(resu);
         enemyResu.sprite = resu.sprite;
         enemyObj.GetComponent<SpriteRenderer>().sprite = enemyResu.sprite;
+        resuNameText.text = enemyResu.info.name;
+    }
+
+    public void ExitEncounter()
+    {
+        ResetEnemy();
+        resuNameText.text = "";
+        FindObjectOfType<LevelLoader>().EndEncounter();
     }
 
     public int NumOfGivenRarity(ResumonRarity rarity)
@@ -119,8 +122,9 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(waitTime);
     }
 
-    private void Reset()
+    private void ResetEnemy()
     {
-        transform.GetChild(0).GetComponent<SpriteRenderer>().sprite = null;
+        Destroy(enemyObj.GetComponent<Resumon>());
+        enemyObj.GetComponent<SpriteRenderer>().sprite = null;
     }
 }

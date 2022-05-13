@@ -8,18 +8,6 @@ public class PartyManager : MonoBehaviour
     public Resumon[] party = new Resumon[6];
     //public List<Resumon> stored = new List<Resumon>();
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            Resumon resu = GameManager.INSTANCE.enemyObj.GetComponent<Resumon>();
-            if (resu != null) 
-            {
-                GameManager.INSTANCE.AttemptToCatch(resu);
-            }
-        }
-    }
-
     public void SetPartyMemberTo(Resumon resu)
     {
         int index = FindOpenPartyIndex();
